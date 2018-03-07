@@ -93,7 +93,7 @@ class App extends Component {
 
         return (
             <div>
-                <h1>Results</h1>
+                <h1>Star Wars Characters</h1>
 
                 <Search search= { this.searchByName } />
 
