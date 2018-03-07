@@ -7,12 +7,19 @@ class Table extends React.Component {
 
     render() {
         let peopleList = this.props.people.map(
-            (element, index) => <li key={ index } onClick= { this.onElementClick.bind( this, index ) }>{ element.name }</li>
+            (element, index) => {
+                let className = null;
+                if ( index === this.props.selectedPosition ) {
+                    className = 'selected';
+                }
+
+                return <li key={ index } onClick= { this.onElementClick.bind( this, index ) } className= { className }>{ element.name }</li>
+            }
         );
 
         return (
             <div>
-                <ul>{ peopleList }</ul>
+                <ul id="PeopleList">{ peopleList }</ul>
             </div>
         );
     }

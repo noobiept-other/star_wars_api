@@ -101,10 +101,11 @@ class App extends Component {
                 {
                     this.state.loading ?
                     <div>Loading...</div> :
-                    <div>
+                    <div id="Content">
                         <Table
                             people= { results }
                             changeSelected= { this.changeSelectedElement }
+                            selectedPosition= { this.state.selectedPosition }
                         />
                         <Person info= { results[ this.state.selectedPosition ] } />
                     </div>
