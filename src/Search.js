@@ -24,7 +24,7 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id="Search">
                 <input
                     type="text"
                     ref={ (input) => { this.textInput = input; } }

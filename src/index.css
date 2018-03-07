@@ -1,14 +1,23 @@
 #Content {
     display: grid;
     grid-template-columns: 25% auto;
+    margin: 20px 0;
 }
 
 #Content > * {
     margin: 10px;
 }
 
+#PeopleList {
+    margin: 0;
+}
+
 #PeopleList li {
     cursor: pointer;
+}
+
+#Search {
+    margin: 10px;
 }
 
 .selected {
