@@ -5,18 +5,33 @@ class Search extends React.Component {
         super( props );
 
         this.onKeyPress = this.onKeyPress.bind( this );
+        this.onClick = this.onClick.bind( this );
     }
 
     onKeyPress( event ) {
         if ( event.key === 'Enter' ) {
-            this.props.search( event.target.value );
+            this.searchUserInput();
         }
+    }
+
+    onClick( event ) {
+        this.searchUserInput();
+    }
+
+    searchUserInput() {
+        this.props.search( this.textInput.value );
     }
 
     render() {
         return (
             <div>
-                <input type="text" placeholder="Search by name..." onKeyPress= { this.onKeyPress } />
+                <input
+                    type="text"
+                    ref={ (input) => { this.textInput = input; } }
+                    placeholder="Search by name..."
+                    onKeyPress={ this.onKeyPress }
+                />
+                <button onClick= { this.onClick }>Search</button>
             </div>
         );
     }
