@@ -65,8 +65,13 @@ class App extends Component {
         }
     }
 
-    searchByName( query ) {
-        console.log( query );
+    async searchByName( query ) {
+        let data = await this.getData( `https://swapi.co/api/people/?search=${ query }`);
+
+        this.setState({
+            data: data,
+            page: 1
+        });
     }
 
     render() {
