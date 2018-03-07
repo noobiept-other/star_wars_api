@@ -3,7 +3,7 @@ import React from 'react';
 class Table extends React.Component {
     render() {
         let peopleList = this.props.people.map(
-            (element, index) => <li key={ index }>{ element }</li>
+            (element, index) => <li key={ index }>{ element.name }</li>
         );
 
         return (

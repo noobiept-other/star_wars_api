@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import Table from './Table';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
+    constructor( props ) {
+        super( props );
 
+        this.nextPage = this.nextPage.bind( this );
+        this.previousPage = this.previousPage.bind( this );
         this.state = {
-            people: []
+            data: {}
         };
     }
 
     async componentDidMount() {
-        let data = await this.getPeople();
-        let names = data.results.map( (element) => element.name );
+        let data = await this.getPeople( this.state.page );
 
         this.setState({
-            people: names
+            data: data
         })
     }
 
@@ -27,10 +28,43 @@ class App extends Component {
         return data;
     }
 
+    async getData( url ) {
+        let response = await fetch( url );
+        let data = await response.json();
+
+        return data;
+    }
+
+    async nextPage() {
+        let url = this.state.data.next;
+
+        if ( url ) {
+            let data = await this.getData( url );
+            this.setState({
+                data: data
+            });
+        }
+    }
+
+    async previousPage() {
+        let url = this.state.data.previous;
+
+        if ( url ) {
+            let data = await this.getData( url );
+            this.setState({
+                data: data
+            });
+        }
+    }
+
     render() {
+        let results = this.state.data.results || [];
+
         return (
             <div>
-                <Table people= { this.state.people } />
+                <Table people= { results } />
+                <button onClick= { this.previousPage }>Previous</button>
+                <button onClick= { this.nextPage }>Next</button>
             </div>
         );
     }
