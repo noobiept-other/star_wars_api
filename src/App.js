@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from './Table';
 import Search from './Search';
+import Person from './Person';
 
 class App extends Component {
     constructor( props ) {
@@ -91,7 +92,10 @@ class App extends Component {
                 {
                     this.state.loading ?
                     <div>Loading...</div> :
-                    <Table people= { results } />
+                    <div>
+                        <Table people= { results } />
+                        <Person info= { results[ 0 ] } />
+                    </div>
                 }
             </div>
         );
