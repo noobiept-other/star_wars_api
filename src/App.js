@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Table from './Table';
+import Search from './Search';
 
 class App extends Component {
     constructor( props ) {
@@ -7,6 +8,7 @@ class App extends Component {
 
         this.nextPage = this.nextPage.bind( this );
         this.previousPage = this.previousPage.bind( this );
+        this.searchByName = this.searchByName.bind( this );
         this.state = {
             data: {},
             page: 1,
@@ -63,6 +65,10 @@ class App extends Component {
         }
     }
 
+    searchByName( query ) {
+        console.log( query );
+    }
+
     render() {
         let results = this.state.data.results || [];
         let totalElements = this.state.data.count;
@@ -76,6 +82,8 @@ class App extends Component {
         return (
             <div>
                 <h1>Results</h1>
+
+                <Search search= { this.searchByName } />
 
                 <div>Page { this.state.page } of { totalPages }</div>
                 <button onClick= { this.previousPage }>Previous</button>
