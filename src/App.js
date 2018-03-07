@@ -8,7 +8,8 @@ class App extends Component {
         this.nextPage = this.nextPage.bind( this );
         this.previousPage = this.previousPage.bind( this );
         this.state = {
-            data: {}
+            data: {},
+            page: 1
         };
     }
 
@@ -16,8 +17,9 @@ class App extends Component {
         let data = await this.getPeople( this.state.page );
 
         this.setState({
-            data: data
-        })
+            data: data,
+            page: 1
+        });
     }
 
     async getPeople( page= 1 ) {
@@ -41,7 +43,8 @@ class App extends Component {
         if ( url ) {
             let data = await this.getData( url );
             this.setState({
-                data: data
+                data: data,
+                page: this.state.page + 1
             });
         }
     }
@@ -52,19 +55,25 @@ class App extends Component {
         if ( url ) {
             let data = await this.getData( url );
             this.setState({
-                data: data
+                data: data,
+                page: this.state.page - 1
             });
         }
     }
 
     render() {
         let results = this.state.data.results || [];
+        let totalElements = this.state.data.count || 1;
+
+            // calculate the total number of pages available
+        let totalPages = Math.ceil( totalElements / results.length );
 
         return (
             <div>
                 <Table people= { results } />
                 <button onClick= { this.previousPage }>Previous</button>
                 <button onClick= { this.nextPage }>Next</button>
+                <div>Page { this.state.page } of { totalPages }</div>
             </div>
         );
     }
