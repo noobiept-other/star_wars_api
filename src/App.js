@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Table from './Table';
 
 class App extends Component {
     constructor(props) {
@@ -27,14 +28,9 @@ class App extends Component {
     }
 
     render() {
-        let peopleList = this.state.people.map(
-            (element, index) => <li key={ index }>{ element }</li>
-        );
-
         return (
             <div>
-                <div>People</div>
-                <ul>{ peopleList }</ul>
+                <Table people= { this.state.people } />
             </div>
         );
     }
