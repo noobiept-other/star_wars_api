@@ -17,13 +17,8 @@ class App extends Component {
     }
 
     async componentDidMount() {
-        let page = 1;
-        let data = await this.getData( `https://swapi.co/api/people/?page=${ page }` );
-
-        this.setState({
-            data: data,
-            page: page
-        });
+            // when searching with an empty string, it gives a list with all the characters
+        await this.searchByName( '' );
     }
 
     async getData( url ) {
