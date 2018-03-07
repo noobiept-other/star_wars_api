@@ -8,7 +8,6 @@ class Table extends React.Component {
 
         return (
             <div>
-                <div>People</div>
                 <ul>{ peopleList }</ul>
             </div>
         );

@@ -9,7 +9,8 @@ class App extends Component {
         this.previousPage = this.previousPage.bind( this );
         this.state = {
             data: {},
-            page: 1
+            page: 1,
+            loading: false
         };
     }
 
@@ -24,8 +25,16 @@ class App extends Component {
     }
 
     async getData( url ) {
+        this.setState({
+            loading: true
+        });
+
         let response = await fetch( url );
         let data = await response.json();
+
+        this.setState({
+            loading: false
+        });
 
         return data;
     }
@@ -66,10 +75,16 @@ class App extends Component {
 
         return (
             <div>
-                <Table people= { results } />
+                <h1>Results</h1>
+
+                <div>Page { this.state.page } of { totalPages }</div>
                 <button onClick= { this.previousPage }>Previous</button>
                 <button onClick= { this.nextPage }>Next</button>
-                <div>Page { this.state.page } of { totalPages }</div>
+                {
+                    this.state.loading ?
+                    <div>Loading...</div> :
+                    <Table people= { results } />
+                }
             </div>
         );
     }
