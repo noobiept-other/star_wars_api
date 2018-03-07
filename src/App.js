@@ -63,10 +63,13 @@ class App extends Component {
 
     render() {
         let results = this.state.data.results || [];
-        let totalElements = this.state.data.count || 1;
+        let totalElements = this.state.data.count;
 
             // calculate the total number of pages available
-        let totalPages = Math.ceil( totalElements / results.length );
+        let totalPages = 1;
+        if ( results.length > 0 ) {
+            totalPages = Math.ceil( totalElements / results.length );
+        }
 
         return (
             <div>
