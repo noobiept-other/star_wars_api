@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Table from './Table';
+import List from './List';
 import Search from './Search';
 import Person from './Person';
 
@@ -104,7 +104,7 @@ class App extends Component {
                     this.state.loading ?
                     <div>Loading...</div> :
                     <div id="Content">
-                        <Table
+                        <List
                             people= { results }
                             changeSelected= { this.changeSelectedElement }
                             selectedPosition= { this.state.selectedPosition }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Table extends React.Component {
+class List extends React.Component {
     onElementClick( index, event ) {
         this.props.changeSelected( index );
     }
@@ -25,4 +25,4 @@ class Table extends React.Component {
     }
 }
 
-export default Table;
+export default List;
