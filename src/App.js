@@ -14,20 +14,13 @@ class App extends Component {
     }
 
     async componentDidMount() {
-        let data = await this.getPeople( this.state.page );
+        let page = 1;
+        let data = await this.getData( `https://swapi.co/api/people/?page=${ page }` );
 
         this.setState({
             data: data,
-            page: 1
+            page: page
         });
-    }
-
-    async getPeople( page= 1 ) {
-        const url = `https://swapi.co/api/people/?page=${ page }`;
-        let response = await fetch( url );
-        let data = await response.json();
-
-        return data;
     }
 
     async getData( url ) {
