@@ -46,7 +46,8 @@ class App extends Component {
             let data = await this.getData( url );
             this.setState({
                 data: data,
-                page: this.state.page + 1
+                page: this.state.page + 1,
+                selectedPosition: 0
             });
         }
     }
@@ -58,7 +59,8 @@ class App extends Component {
             let data = await this.getData( url );
             this.setState({
                 data: data,
-                page: this.state.page - 1
+                page: this.state.page - 1,
+                selectedPosition: 0
             });
         }
     }
