@@ -1,9 +1,13 @@
 import React from 'react';
 
 class Table extends React.Component {
+    onElementClick( index, event ) {
+        this.props.changeSelected( index );
+    }
+
     render() {
         let peopleList = this.props.people.map(
-            (element, index) => <li key={ index }>{ element.name }</li>
+            (element, index) => <li key={ index } onClick= { this.onElementClick.bind( this, index ) }>{ element.name }</li>
         );
 
         return (

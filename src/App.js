@@ -10,10 +10,12 @@ class App extends Component {
         this.nextPage = this.nextPage.bind( this );
         this.previousPage = this.previousPage.bind( this );
         this.searchByName = this.searchByName.bind( this );
+        this.changeSelectedElement = this.changeSelectedElement.bind( this );
         this.state = {
             data: {},
             page: 1,
-            loading: false
+            loading: false,
+            selectedPosition: 0
         };
     }
 
@@ -66,7 +68,14 @@ class App extends Component {
 
         this.setState({
             data: data,
-            page: 1
+            page: 1,
+            selectedPosition: 0
+        });
+    }
+
+    changeSelectedElement( position ) {
+        this.setState({
+            selectedPosition: position
         });
     }
 
@@ -93,8 +102,11 @@ class App extends Component {
                     this.state.loading ?
                     <div>Loading...</div> :
                     <div>
-                        <Table people= { results } />
-                        <Person info= { results[ 0 ] } />
+                        <Table
+                            people= { results }
+                            changeSelected= { this.changeSelectedElement }
+                        />
+                        <Person info= { results[ this.state.selectedPosition ] } />
                     </div>
                 }
             </div>
