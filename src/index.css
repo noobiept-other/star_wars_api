@@ -1,0 +1,16 @@
+#Content {
+    display: grid;
+    grid-template-columns: 25% auto;
+}
+
+#Content > * {
+    margin: 10px;
+}
+
+#PeopleList li {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: grey;
+}
