@@ -91,6 +91,9 @@ class App extends Component {
             totalPages = Math.ceil( totalElements / results.length );
         }
 
+        let isFirstPage = this.state.page === 1;
+        let isLastPage = this.state.page === totalPages;
+
         return (
             <div>
                 <h1>Star Wars Characters</h1>
@@ -98,8 +101,8 @@ class App extends Component {
                 <Search search= { this.searchByName } />
 
                 <div>Page { this.state.page } of { totalPages }</div>
-                <button onClick= { this.previousPage }>Previous</button>
-                <button onClick= { this.nextPage }>Next</button>
+                <button onClick= { this.previousPage } disabled= { isFirstPage }>Previous</button>
+                <button onClick= { this.nextPage } disabled= { isLastPage }>Next</button>
                 {
                     this.state.loading ?
                     <div>Loading...</div> :
