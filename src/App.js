@@ -86,9 +86,10 @@ class App extends Component {
         let totalElements = this.state.data.count;
 
             // calculate the total number of pages available
+        let elementsPerPage = 10;
         let totalPages = 1;
         if ( results.length > 0 ) {
-            totalPages = Math.ceil( totalElements / results.length );
+            totalPages = Math.ceil( totalElements / elementsPerPage );
         }
 
         let isFirstPage = this.state.page === 1;
